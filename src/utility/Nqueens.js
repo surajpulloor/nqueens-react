@@ -15,6 +15,14 @@ class Nqueens {
 
     collidingVertically(row, col) {
 
+        while (--row >= 0) {
+            if (this.board[row][col]) {
+                return true;
+            }
+        }
+
+        return false;
+
     }
 
     collidingDiagonally(row, col) {
