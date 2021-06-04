@@ -59,6 +59,8 @@ class Nqueens {
 
     isSafe(row, col) {
 
+        return !(this.collidingVertically(row, col) || this.collidingDiagonally(row, col));
+
     }
 
     solve(row) {
