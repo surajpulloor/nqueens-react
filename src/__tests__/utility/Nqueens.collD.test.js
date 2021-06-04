@@ -38,15 +38,27 @@ describe("Testing collidingDiagonally() for row = 7, col = 3 i.e last row and mi
         });
 
 
-        test("colliding at (7, 3)", () => {
+        test("colliding at (6, 4)", () => {
     
             // board config when the piece collides with the first cell
-            nqueens.board[7][3] = true;
+            nqueens.board[6][4] = true;
     
             expect(nqueens.collidingDiagonally(row, col)).toBe(true);
     
              // reset the board
-             nqueens.board[7][3] = false;
+             nqueens.board[6][4] = false;
+    
+        });
+
+        test("colliding at (3, 7)", () => {
+    
+            // board config when the piece collides with the first cell
+            nqueens.board[3][7] = true;
+    
+            expect(nqueens.collidingDiagonally(row, col)).toBe(true);
+    
+             // reset the board
+             nqueens.board[3][7] = false;
     
         });
     });
