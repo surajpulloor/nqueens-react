@@ -1,5 +1,6 @@
 class Nqueens {
     constructor(n) {
+
         this.n = n;
         this.solutions = [];
         this.board = new Array(n);
@@ -63,7 +64,41 @@ class Nqueens {
 
     }
 
+    extractSolution() {
+        const solution = [];
+
+        for (let i = 0; i < this.n; i++) {
+            for (let j = 0; j < this.n; j++) {
+                if (this.board[i][j]) {
+                    solution.push(j);
+                    break;
+                }
+            }
+        }
+
+        return solution;
+    }
+
     solve(row) {
+
+        if (row === this.n) {
+
+            const solution = this.extractSolution();
+
+            this.solutions.push(solution);
+            return;
+        }
+
+        for (let col = 0; col < this.n; col++) {
+            if (this.isSafe(row, col)) {
+                this.board[row][col] = true;
+                this.solve(row + 1);
+                this.board[row][col] = false;
+            }
+        }
+
+
+        return this.solutions;
 
     }
 }
