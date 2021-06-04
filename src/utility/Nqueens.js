@@ -8,8 +8,8 @@ class Nqueens {
 
 
     constructBoard() {
-        for (let e of this.board) {
-            e.push(new Array(this.n));
+        for (let i = 0; i < this.board.length; i++) {
+            this.board[i] = new Array(this.n).fill(false);
         }
     }
 
@@ -31,4 +31,4 @@ class Nqueens {
 }
 
 
-export default Nqueens;
+export default Nqueens
