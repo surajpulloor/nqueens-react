@@ -27,6 +27,34 @@ class Nqueens {
 
     collidingDiagonally(row, col) {
 
+        let i = row - 1;
+        let j = col - 1;
+
+        // check collision for left diagonal
+        while (i >= 0 && j >= 0) {
+            if (this.board[i][j]) {
+                return true;
+            }
+
+            i--;
+            j--;
+        }
+
+        i = row - 1;
+        j = col + 1;
+        // check collsion for right diagonal
+        while (i >= 0 && j < this.board.length) {
+            if (this.board[i][j]) {
+                return true;
+            }
+
+            i--;
+            j++;
+        }
+
+
+        return false;
+
     }
 
     isSafe(row, col) {
