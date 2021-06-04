@@ -1,4 +1,4 @@
-import Nqueens from '../utility/Nqueens';
+import Nqueens from '../../utility/Nqueens';
 
 // const Nqueens = require('../utility/Nqueens');
 
