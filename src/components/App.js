@@ -132,7 +132,7 @@ class App extends Component {
       <div className="container">
 
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 chess-board">
 
             {
               this.state.n !== '' && 
@@ -149,7 +149,8 @@ class App extends Component {
             
             <ChessBoard solutions={this.state.solutions} index={this.state.index} n={this.state.n} isNum={this.state.isNum} />
           </div>
-          <div className="col-md-6">
+
+          <div className="col-md-6 controls">
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="input-group has-validation">
                   <input 
