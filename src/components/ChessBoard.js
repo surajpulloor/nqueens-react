@@ -19,23 +19,26 @@ function ChessBoard(props) {
                 ?
 
                 <table className="chess-board">
+                    <tbody>
 
-                    { 
-                        props.solutions[props.index].map((solutionIndex, index) => (
-                            <tr>
-                                {
-                                    new Array(parseInt(props.n)).fill(true).map((value, index2) => (
-                                        <td>
-                                            {
-                                                solutionIndex === index2 ? <FontAwesomeIcon icon={faChessQueen} /> : ' '
-                                            }
-                                        </td>
-                                    ))
-                                }
-                            </tr>
 
-                        ))
-                    }
+                        { 
+                            props.solutions[props.index].map((solutionIndex, index) => (
+                                <tr key={"tr" + index}>
+                                    {
+                                        new Array(parseInt(props.n)).fill(true).map((value, index2) => (
+                                            <td key={"td" + index2}>
+                                                {
+                                                    solutionIndex === index2 ? <FontAwesomeIcon icon={faChessQueen} /> : ' '
+                                                }
+                                            </td>
+                                        ))
+                                    }
+                                </tr>
+
+                            ))
+                        }
+                    </tbody>
 
                 </table>
 
