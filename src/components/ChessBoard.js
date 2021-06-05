@@ -11,9 +11,10 @@ function ChessBoard(props) {
         <div className="solutions">
 
             {
-                props.solutions !== null && 
+                props.solutions && 
                 props.index !== -1 && 
                 props.n !== '' && 
+                props.isNum &&
                 props.solutions[props.index].length === parseInt(props.n)
 
                 ?
@@ -43,7 +44,46 @@ function ChessBoard(props) {
                 </table>
 
                 :
-                <h1>Chess Component</h1>
+                <div className="chess-board-structure">
+                    {
+                        props.n !== '' &&
+                        props.isNum
+
+                        ?
+                        
+                        <table className="chess-board">
+
+                            <tbody>
+
+                                {
+                                    new Array(parseInt(props.n)).fill(false).map((value, index) => (
+                                        <tr key={"tr-structure" + index}>
+                                        {
+            
+                                            new Array(parseInt(props.n)).fill(false).map((value, index) => (
+                                                <td key={"td-structure" + index}>&nbsp;</td>
+                                            ))
+            
+                                        }
+                                    
+                                        </tr>
+                                    ))
+                                }
+
+
+                            </tbody>
+                        
+                            
+                        </table>
+
+                        :
+
+                        <div className="message">
+                            <h1>The nxn chessboard will be displayed here. Give your 'N' and click on 'Solve'</h1>
+                        </div>
+
+                    }
+                </div>
             }
 
 
