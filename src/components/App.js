@@ -31,14 +31,18 @@ class App extends Component {
   }
 
 
-  solveOnEnter = (e) => {
+  solveOnKeyPress = (e) => {
     if (e.keyCode === 13 && this.state.n !== '' && this.state.isNum) {
       this.solve();
+    } else if (e.keyCode === 107 && this.state.solutions && this.state.index + 1 < this.state.solutions.length) {
+      this.next();
+    } else if (e.keyCode === 109 && this.state.solutions && this.state.index - 1 >= 0) {
+      this.prev();
     }
   }
 
 
-  prev = (e) => {
+  prev = () => {
 
     this.setState((prevState) => ({
       index: prevState.index - 1
@@ -46,7 +50,7 @@ class App extends Component {
 
   }
 
-  next = (e) => {
+  next = () => {
     this.setState((prevState) => ({
       index: prevState.index + 1
     }));
@@ -54,7 +58,10 @@ class App extends Component {
 
 
   setN = (e) => {
-    const n = e.target.value;
+    let n = e.target.value;
+
+    // replace +,- with empty string because we are using it for scrolling through our solutions
+    n = n.replace(/[\+\-]+/ig, '');
 
     const nValid = this.validateN(n);
 
@@ -125,7 +132,7 @@ class App extends Component {
                     className="form-control" 
                     value={this.state.n} 
                     onChange={this.setN} 
-                    onKeyUp={this.solveOnEnter} 
+                    onKeyUp={this.solveOnKeyPress} 
                   />
                   <div className="invalid-feedback" style={{display: !this.state.isNum ? 'block' : 'none'}}>
                     {this.state.validationMsg}
