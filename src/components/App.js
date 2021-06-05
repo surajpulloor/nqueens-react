@@ -94,6 +94,15 @@ class App extends Component {
         <div className="row">
           <div className="col-md-6">
 
+            {
+              this.state.n !== '' && 
+              this.state.solutions && 
+              this.state.solutions[0].length === parseInt(this.state.n) && 
+              this.state.isNum  ?
+              <h1>No. of solutions for {this.state.n} queens is {this.state.solutions.length}</h1> :
+              ''
+            }
+            
             <ChessBoard solutions={this.state.solutions} index={this.state.index} n={this.state.n} />
           </div>
           <div className="col-md-6">
