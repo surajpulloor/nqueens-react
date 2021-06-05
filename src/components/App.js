@@ -63,10 +63,7 @@ class App extends Component {
     let isNum = true;
     let validationMsg = '';
 
-    if (/^[^\d]+$/gi.test(s)) {
-      isNum = false;
-      validationMsg = "Only number's are allowed";
-    } else if (/^\-[\d]+$/gi.test(s)) {
+    if (/^\-[\d]+$/gi.test(s)) {
       isNum = false;
       validationMsg = "Negative number's are not allowed";
     } else if (/^\-[\d]+\.[\d]+$/gi.test(s)) {
@@ -75,6 +72,9 @@ class App extends Component {
     } else if (/^\.[\d]+$/gi.test(s) || /^[\d]+\.[\d]+$/gi.test(s)) {
       isNum = false;
       validationMsg = "Decimal number's are not allowed";
+    } else if (/[^0-9]+/gi.test(s)) {
+      isNum = false;
+      validationMsg = "Only number's are allowed";
     }
 
     return {
