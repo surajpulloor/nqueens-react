@@ -1,6 +1,6 @@
 import '../styles/App.css';
 import ChessBoard from './ChessBoard';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Nqueens from "../utility/Nqueens";
 
 class App extends Component {
@@ -10,7 +10,9 @@ class App extends Component {
     this.state = {
       n: '',
       index: -1,
-      solutions: null
+      solutions: null,
+      isNum: false,
+      validationMsg: ''
     };
 
   }
@@ -44,52 +46,104 @@ class App extends Component {
   }
 
 
-  validateN = (e) => {
-    
+  setN = (e) => {
+    const n = e.target.value;
+
+    const nValid = this.validateN(n);
+
+    this.setState({
+      n: n,
+      isNum: nValid.isNum,
+      validationMsg: nValid.validationMsg
+    });
+  }
+
+  validateN = (s) => {
+
+    let isNum = true;
+    let validationMsg = '';
+
+    if (/^[^\d]+$/gi.test(s)) {
+      isNum = false;
+      validationMsg = "Only number's are allowed";
+    } else if (/^\-[\d]+$/gi.test(s)) {
+      isNum = false;
+      validationMsg = "Negative number's are not allowed";
+    } else if (/^\-[\d]+\.[\d]+$/gi.test(s)) {
+      isNum = false;
+      validationMsg = "Negative decimal number's are not allowed";
+    } else if (/^\.[\d]+$/gi.test(s) || /^[\d]+\.[\d]+$/gi.test(s)) {
+      isNum = false;
+      validationMsg = "Decimal number's are not allowed";
+    }
+
+    return {
+      isNum: isNum,
+      validationMsg: validationMsg
+    };
   }
 
   render() {
 
     return (
       <div className="container">
-  
+
         <div className="row">
           <div className="col-md-6">
-  
+
             <ChessBoard solutions={this.state.solutions} index={this.state.index} n={this.state.n} />
           </div>
           <div className="col-md-6">
             <form>
-              <input type="text" placeholder="N" className="form-control" value={this.state.n} onChange={(e) => this.setState({n: e.target.value})} />
-              <input type="button" value="Solve" className="btn btn-primary" disabled={this.state.n === ''} onClick={this.solve} />
+              <div className="input-group has-validation">
+                  <input type="text" placeholder="N" className="form-control" value={this.state.n} onChange={this.setN} />
+                  <div className="invalid-feedback" style={{display: !this.state.isNum ? 'block' : 'none'}}>
+                    {this.state.validationMsg}
+                  </div>
+              </div>
+                
               <input 
                 type="button" 
-                value="Prev" 
+                value="Solve" 
                 className="btn btn-primary" 
                 disabled={
-                  this.state.n === '' || 
-                  (this.state.solutions && this.state.solutions[0].length !== parseInt(this.state.n)) || 
-                  this.state.index - 1 < 0
+                  this.state.n === '' ||
+                  (this.state.n !== '' && !this.state.isNum)
                 } 
-                onClick={this.prev} 
+                onClick={this.solve} 
               />
-              <input 
-                type="button" 
-                value="Next" 
-                className="btn btn-primary" 
+              
+              <input
+                type="button"
+                value="Prev"
+                className="btn btn-primary"
                 disabled={
-                  this.state.n === '' || 
-                  (this.state.solutions && this.state.solutions[0].length !== parseInt(this.state.n)) || 
-                  this.state.index < 0 || 
+                  this.state.n === '' ||
+                  (this.state.n !== '' && !this.state.isNum) ||
+                  (this.state.solutions && this.state.solutions[0].length !== parseInt(this.state.n)) ||
+                  this.state.index - 1 < 0
+                }
+                onClick={this.prev}
+              />
+              
+              <input
+                type="button"
+                value="Next"
+                className="btn btn-primary"
+                disabled={
+                  this.state.n === '' ||
+                  (this.state.n !== '' && !this.state.isNum) ||
+                  (this.state.solutions && this.state.solutions[0].length !== parseInt(this.state.n)) ||
+                  this.state.index < 0 ||
                   (this.state.solutions && this.state.index + 1 >= this.state.solutions.length)
-                } onClick={this.next} 
+                } onClick={this.next}
               />
             </form>
           </div>
+          </div>
+
+
         </div>
-  
-        
-      </div>
     );
 
   }
