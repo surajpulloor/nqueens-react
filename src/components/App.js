@@ -15,15 +15,17 @@ class App extends Component {
       validationMsg: ''
     };
 
+    this.ref = React.createRef();
+
   }
 
 
   componentDidMount() {
-    document.body.addEventListener('keydown', this.solveOnKeyPress);
+    document.body.addEventListener('keydown', this.initShortcutOnBody);
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('keydown', this.solveOnKeyPress);
+    document.body.removeEventListener('keydown', this.initShortcutOnBody);
   }
 
   solve = () => {
@@ -40,7 +42,19 @@ class App extends Component {
   }
 
 
-  solveOnKeyPress = (e) => {
+  initShortcutOnBody = (e) => {
+    if (e.keyCode === 70) {
+      this.ref.current.focus();
+    } else {
+      this.initShortcutOnInput(e);
+    }
+  }
+
+
+  initShortcutOnInput = (e) => {
+    
+    e.stopPropagation();
+
     if (e.keyCode === 13 && this.state.n !== '' && this.state.isNum) {
       this.solve();
     } else if (e.keyCode === 107 && this.state.solutions && this.state.index + 1 < this.state.solutions.length) {
@@ -70,7 +84,7 @@ class App extends Component {
     let n = e.target.value;
 
     // replace +,- with empty string because we are using it for scrolling through our solutions
-    n = n.replace(/[\+\-]+/ig, '');
+    n = n.replace(/[\+\-f]+/ig, '');
 
     const nValid = this.validateN(n);
 
@@ -141,7 +155,8 @@ class App extends Component {
                     className="form-control" 
                     value={this.state.n} 
                     onChange={this.setN} 
-                    onKeyUp={this.solveOnKeyPress} 
+                    onKeyDown={this.initShortcutOnInput} 
+                    ref={this.ref}
                   />
                   <div className="invalid-feedback" style={{display: !this.state.isNum ? 'block' : 'none'}}>
                     {this.state.validationMsg}
