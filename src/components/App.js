@@ -157,6 +157,7 @@ class App extends Component {
                     onChange={this.setN} 
                     onKeyDown={this.initShortcutOnInput} 
                     ref={this.ref}
+                    autoFocus
                   />
                   <div className="invalid-feedback" style={{display: !this.state.isNum ? 'block' : 'none'}}>
                     {this.state.validationMsg}
