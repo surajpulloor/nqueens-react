@@ -115,6 +115,9 @@ class App extends Component {
     } else if (parseInt(s) < 4) {
       isNum = false;
       validationMsg = "You can only calculate solution's for more than 3 queens";
+    } else if (parseInt(s) > 13) {
+      isNum = false;
+      validationMsg = "You cannot calculate solution's for more than 13 queens";
     }
 
     return {
