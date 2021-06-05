@@ -17,6 +17,15 @@ class App extends Component {
 
   }
 
+
+  componentDidMount() {
+    document.body.addEventListener('keydown', this.solveOnKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('keydown', this.solveOnKeyPress);
+  }
+
   solve = () => {
 
     const n = parseInt(this.state.n);
