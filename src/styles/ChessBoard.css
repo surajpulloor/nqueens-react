@@ -1,0 +1,10 @@
+table.chess-board {
+    border: 2px solid black;
+}
+
+table.chess-board td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    font-size: 23px;
+}
