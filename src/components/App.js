@@ -17,7 +17,7 @@ class App extends Component {
 
   }
 
-  solve = (e) => {
+  solve = () => {
 
     const n = parseInt(this.state.n);
 
@@ -28,6 +28,13 @@ class App extends Component {
       index: 0
     });
 
+  }
+
+
+  solveOnEnter = (e) => {
+    if (e.keyCode === 13 && this.state.n !== '' && this.state.isNum) {
+      this.solve();
+    }
   }
 
 
@@ -110,9 +117,16 @@ class App extends Component {
             <ChessBoard solutions={this.state.solutions} index={this.state.index} n={this.state.n} isNum={this.state.isNum} />
           </div>
           <div className="col-md-6">
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
               <div className="input-group has-validation">
-                  <input type="text" placeholder="N" className="form-control" value={this.state.n} onChange={this.setN} />
+                  <input 
+                    type="text" 
+                    placeholder="N" 
+                    className="form-control" 
+                    value={this.state.n} 
+                    onChange={this.setN} 
+                    onKeyUp={this.solveOnEnter} 
+                  />
                   <div className="invalid-feedback" style={{display: !this.state.isNum ? 'block' : 'none'}}>
                     {this.state.validationMsg}
                   </div>
