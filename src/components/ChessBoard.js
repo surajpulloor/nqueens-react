@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChessQueen } from '@fortawesome/free-solid-svg-icons';
 
+import PropTypes from "prop-types";
+
 import '../styles/ChessBoard.css';
 
 function ChessBoard(props) {
@@ -93,5 +95,12 @@ function ChessBoard(props) {
     );
 
 }
+
+ChessBoard.propTypes = {
+    solutions: PropTypes.array,
+    index: PropTypes.number,
+    n: PropTypes.string,
+    isNum: PropTypes.bool
+};
 
 export default ChessBoard;
