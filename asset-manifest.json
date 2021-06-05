@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/nqueens-react/static/css/main.0a47db03.chunk.css",
+    "main.js": "/nqueens-react/static/js/main.2e84ffb4.chunk.js",
+    "main.js.map": "/nqueens-react/static/js/main.2e84ffb4.chunk.js.map",
+    "runtime-main.js": "/nqueens-react/static/js/runtime-main.ed5868ea.js",
+    "runtime-main.js.map": "/nqueens-react/static/js/runtime-main.ed5868ea.js.map",
+    "static/css/2.61b4cb56.chunk.css": "/nqueens-react/static/css/2.61b4cb56.chunk.css",
+    "static/js/2.f41f350e.chunk.js": "/nqueens-react/static/js/2.f41f350e.chunk.js",
+    "static/js/2.f41f350e.chunk.js.map": "/nqueens-react/static/js/2.f41f350e.chunk.js.map",
+    "static/js/3.e5e0d411.chunk.js": "/nqueens-react/static/js/3.e5e0d411.chunk.js",
+    "static/js/3.e5e0d411.chunk.js.map": "/nqueens-react/static/js/3.e5e0d411.chunk.js.map",
+    "index.html": "/nqueens-react/index.html",
+    "static/css/2.61b4cb56.chunk.css.map": "/nqueens-react/static/css/2.61b4cb56.chunk.css.map",
+    "static/css/main.0a47db03.chunk.css.map": "/nqueens-react/static/css/main.0a47db03.chunk.css.map",
+    "static/js/2.f41f350e.chunk.js.LICENSE.txt": "/nqueens-react/static/js/2.f41f350e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed5868ea.js",
+    "static/css/2.61b4cb56.chunk.css",
+    "static/js/2.f41f350e.chunk.js",
+    "static/css/main.0a47db03.chunk.css",
+    "static/js/main.2e84ffb4.chunk.js"
+  ]
+}
