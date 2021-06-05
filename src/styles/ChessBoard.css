@@ -1,10 +1,12 @@
 table.chess-board {
-    border: 2px solid black;
+    border: 4px solid white;
 }
 
 table.chess-board td {
-    border: 2px solid black;
+    border: 4px solid white;
     border-collapse: collapse;
-    padding: 8px;
-    font-size: 23px;
+    padding: 3px;
+    font-size: 1.5em;
+    background-color: burlywood;
+    color: white;
 }
