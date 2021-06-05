@@ -75,6 +75,9 @@ class App extends Component {
     } else if (/[^0-9]+/gi.test(s)) {
       isNum = false;
       validationMsg = "Only number's are allowed";
+    } else if (parseInt(s) < 4) {
+      isNum = false;
+      validationMsg = "You can only calculate solution's for more than 3 queens";
     }
 
     return {
